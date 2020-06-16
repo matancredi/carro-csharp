@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Codenation.Dominio.Entidades
 {
-    public class Marca
+    public class Versao
     {
         public int ID { get; set; }
         public string Nome { get; set; }
-        public IEnumerable<Modelo> Modelos { get; set; }
+        public int ModeloID { get; set; }
     }
 }
