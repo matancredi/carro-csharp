@@ -1,0 +1,9 @@
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\bin\Debug\netcoreapp3.1\Codenation.Dominio.deps.json
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\bin\Debug\netcoreapp3.1\Codenation.Dominio.dll
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\bin\Debug\netcoreapp3.1\Codenation.Dominio.pdb
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\obj\Debug\netcoreapp3.1\Codenation.Dominio.csprojAssemblyReference.cache
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\obj\Debug\netcoreapp3.1\Codenation.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\obj\Debug\netcoreapp3.1\Codenation.Dominio.AssemblyInfoInputs.cache
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\obj\Debug\netcoreapp3.1\Codenation.Dominio.AssemblyInfo.cs
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\obj\Debug\netcoreapp3.1\Codenation.Dominio.dll
+C:\Users\Mariana\source\repos\codenation\Codenation.Dominio\obj\Debug\netcoreapp3.1\Codenation.Dominio.pdb
