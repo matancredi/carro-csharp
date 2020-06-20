@@ -30,7 +30,71 @@ namespace Codenation.Infra.Data.Context
                         .HasColumnType("varchar(250)")
                         .HasColumnName("Nome");
 
-           base.OnModelCreating(modelbuilder);
+            base.OnModelCreating(modelbuilder);
+
+            modelbuilder.Entity<Veiculo>()
+                   .ToTable("Veiculo");
+
+            modelbuilder.Entity<Veiculo>()
+                .Property(c => c.Imagem)
+                .IsRequired()
+                .HasColumnType("varchar(500)")
+                .HasColumnName("Imagem");
+
+            modelbuilder.Entity<Veiculo>()
+                .Property(c => c.KM)
+                .IsRequired()
+                .HasColumnType("int")
+                .HasColumnName("KM");
+
+            modelbuilder.Entity<Veiculo>()
+                .Property(c => c.Preco)
+                .IsRequired()
+                .HasColumnType("float")
+                .HasColumnName("Preco");
+
+            modelbuilder.Entity<Veiculo>()
+                .Property(c => c.AnoModelo)
+                .IsRequired()
+                .HasColumnType("int")
+                .HasColumnName("AnoModelo");
+
+            modelbuilder.Entity<Veiculo>()
+                .Property(c => c.AnoFabricacao)
+                .IsRequired()
+                .HasColumnType("int")
+                .HasColumnName("AnoFabricacao");
+
+            modelbuilder.Entity<Veiculo>()
+                .Property(c => c.Cor)
+                .IsRequired()
+                .HasColumnType("varchar(500)")
+                .HasColumnName("Cor");
+
+            base.OnModelCreating(modelbuilder);
+
+            modelbuilder.Entity<Carro>()
+                   .ToTable("Carro");
+
+            modelbuilder.Entity<Carro>()
+                .Property(c => c.Ano)
+                .IsRequired()
+                .HasColumnType("int")
+                .HasColumnName("Ano");
+
+            modelbuilder.Entity<Carro>()
+                .Property(c => c.Quilometragem)
+                .IsRequired()
+                .HasColumnType("int")
+                .HasColumnName("Quilometragem");
+
+            modelbuilder.Entity<Carro>()
+                .Property(c => c.Observacao)
+                .IsRequired()
+                .HasColumnType("varchar(500)")
+                .HasColumnName("Observacao");
+
+            base.OnModelCreating(modelbuilder);
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,6 +111,7 @@ namespace Codenation.Infra.Data.Context
             // update-database
             // rodar add-migration CriacaoTabelaVersao
             // update-database
+            // remove-migration (remove a última)
 
             base.OnConfiguring(optionsBuilder);
         }

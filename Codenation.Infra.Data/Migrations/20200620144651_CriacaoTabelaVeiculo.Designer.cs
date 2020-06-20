@@ -4,60 +4,22 @@ using Codenation.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Codenation.Infra.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200620144651_CriacaoTabelaVeiculo")]
+    partial class CriacaoTabelaVeiculo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Codenation.Dominio.Entidades.Carro", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Ano")
-                        .HasColumnName("Ano")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MarcaID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ModeloID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Observacao")
-                        .IsRequired()
-                        .HasColumnName("Observacao")
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<int>("Quilometragem")
-                        .HasColumnName("Quilometragem")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("VersaoID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("MarcaID");
-
-                    b.HasIndex("ModeloID");
-
-                    b.HasIndex("VersaoID");
-
-                    b.ToTable("Carro");
-                });
 
             modelBuilder.Entity("Codenation.Dominio.Entidades.Marca", b =>
                 {
@@ -169,21 +131,6 @@ namespace Codenation.Infra.Data.Migrations
                     b.HasIndex("ModeloID");
 
                     b.ToTable("Versao");
-                });
-
-            modelBuilder.Entity("Codenation.Dominio.Entidades.Carro", b =>
-                {
-                    b.HasOne("Codenation.Dominio.Entidades.Marca", "Marca")
-                        .WithMany()
-                        .HasForeignKey("MarcaID");
-
-                    b.HasOne("Codenation.Dominio.Entidades.Modelo", "Modelo")
-                        .WithMany()
-                        .HasForeignKey("ModeloID");
-
-                    b.HasOne("Codenation.Dominio.Entidades.Versao", "Versao")
-                        .WithMany()
-                        .HasForeignKey("VersaoID");
                 });
 
             modelBuilder.Entity("Codenation.Dominio.Entidades.Modelo", b =>
