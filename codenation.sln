@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{8B7917
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comum", "Comum", "{57C81485-6D33-47D1-BC56-A510978BE562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codenation.API", "Codenation.API\Codenation.API.csproj", "{99C851E3-9FC0-4FE3-971E-F7AC63FD366A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codenation.API", "Codenation.API\Codenation.API.csproj", "{99C851E3-9FC0-4FE3-971E-F7AC63FD366A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codenation.Dominio", "Codenation.Dominio\Codenation.Dominio.csproj", "{4893E236-A23B-4569-96C6-AA262CA6A075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codenation.Dominio", "Codenation.Dominio\Codenation.Dominio.csproj", "{4893E236-A23B-4569-96C6-AA262CA6A075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codenation.Infra.Data", "Codenation.Infra.Data\Codenation.Infra.Data.csproj", "{CB632F9F-3EBD-4170-883D-49852AE66BDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codenation.Infra.Data", "Codenation.Infra.Data\Codenation.Infra.Data.csproj", "{CB632F9F-3EBD-4170-883D-49852AE66BDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codenation.Teste", "Codenation.Teste\Codenation.Teste.csproj", "{8DDDF3FA-E8AA-4365-B559-685926D1A52B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codenation.Teste", "Codenation.Teste\Codenation.Teste.csproj", "{8DDDF3FA-E8AA-4365-B559-685926D1A52B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codenation.Infra.CrossCuting", "Codenation.Infra.CrossCuting\Codenation.Infra.CrossCuting.csproj", "{C1777357-EC10-4EEB-A259-9C1F1A64A184}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codenation.Infra.CrossCuting", "Codenation.Infra.CrossCuting\Codenation.Infra.CrossCuting.csproj", "{C1777357-EC10-4EEB-A259-9C1F1A64A184}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

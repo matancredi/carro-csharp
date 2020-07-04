@@ -1,119 +1,145 @@
 ﻿using Codenation.Dominio.Entidades;
+using Codenation.Infra.Data.Settings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Codenation.Infra.Data.Context
 {
     public sealed class DataContext : DbContext, IDisposable
     {
-        protected override void OnModelCreating(ModelBuilder modelbuilder)
+
+        public DbSet<Marca> Marcas { get; set; }
+        public DbSet<Modelo> Modelos { get; set; }
+        public DbSet<Versao> Versoes { get; set; }
+        public DbSet<Carro> Carros { get; set; }
+        public DbSet<Veiculo> Veiculos { get; set; }
+
+        public DataContext(DbContextOptions<DataContext> options)
+           : base(options)
         {
-            modelbuilder.Entity<Marca>()
-                        .ToTable("Marca");
+        }
 
-            modelbuilder.Entity<Marca>()
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Marca>()
+            .ToTable("Marca");
+
+            modelBuilder.Entity<Marca>()
                         .Property(c => c.Nome)
-                        .IsRequired()
+                        .IsRequired() //obrigatoriedade
                         .HasColumnType("varchar(250)")
-                        .HasColumnName("Nome");
+                        .HasColumnName("Nome"); //nome da coluna
 
-            base.OnModelCreating(modelbuilder);
+            base.OnModelCreating(modelBuilder);
 
-            modelbuilder.Entity<Versao>()
-                        .ToTable("Versao");
+            //Criação tabela Versao
+            modelBuilder.Entity<Versao>()
+             .ToTable("Versao");
 
-            modelbuilder.Entity<Versao>()
-                        .Property(c => c.Nome)
-                        .IsRequired()
-                        .HasColumnType("varchar(250)")
-                        .HasColumnName("Nome");
+            modelBuilder.Entity<Versao>()
+                .Property(c => c.Nome)
+                .IsRequired()
+                .HasColumnType("varchar(250)")
+                .HasColumnName("Nome");
 
-            base.OnModelCreating(modelbuilder);
+            base.OnModelCreating(modelBuilder);
+            //Fim
 
-            modelbuilder.Entity<Veiculo>()
-                   .ToTable("Veiculo");
+            //Criação da tabela Veiculo
+            modelBuilder.Entity<Veiculo>()
+                .ToTable("Veiculo");
 
-            modelbuilder.Entity<Veiculo>()
+            modelBuilder.Entity<Veiculo>()
                 .Property(c => c.Imagem)
                 .IsRequired()
                 .HasColumnType("varchar(500)")
                 .HasColumnName("Imagem");
 
-            modelbuilder.Entity<Veiculo>()
-                .Property(c => c.KM)
-                .IsRequired()
-                .HasColumnType("int")
-                .HasColumnName("KM");
+            modelBuilder.Entity<Veiculo>()
+               .Property(c => c.KM)
+               .IsRequired()
+               .HasColumnType("int")
+               .HasColumnName("Quilometragem");
 
-            modelbuilder.Entity<Veiculo>()
-                .Property(c => c.Preco)
-                .IsRequired()
-                .HasColumnType("float")
-                .HasColumnName("Preco");
+            modelBuilder.Entity<Veiculo>()
+               .Property(c => c.Preco)
+               .IsRequired()
+               .HasColumnType("float")
+               .HasColumnName("Preco");
 
-            modelbuilder.Entity<Veiculo>()
-                .Property(c => c.AnoModelo)
-                .IsRequired()
-                .HasColumnType("int")
-                .HasColumnName("AnoModelo");
 
-            modelbuilder.Entity<Veiculo>()
-                .Property(c => c.AnoFabricacao)
-                .IsRequired()
-                .HasColumnType("int")
-                .HasColumnName("AnoFabricacao");
+            modelBuilder.Entity<Veiculo>()
+              .Property(c => c.AnoModelo)
+              .IsRequired()
+              .HasColumnType("int")
+              .HasColumnName("AnoModelo");
 
-            modelbuilder.Entity<Veiculo>()
-                .Property(c => c.Cor)
-                .IsRequired()
-                .HasColumnType("varchar(500)")
-                .HasColumnName("Cor");
+            modelBuilder.Entity<Veiculo>()
+                         .Property(c => c.AnoFabricacao)
+                         .IsRequired()
+                         .HasColumnType("int")
+                         .HasColumnName("AnoFabricacao");
 
-            base.OnModelCreating(modelbuilder);
+            modelBuilder.Entity<Veiculo>()
+               .Property(c => c.Cor)
+               .IsRequired()
+               .HasColumnType("varchar(500)")
+               .HasColumnName("Cor");
 
-            modelbuilder.Entity<Carro>()
-                   .ToTable("Carro");
+            base.OnModelCreating(modelBuilder);
+            //Fim
 
-            modelbuilder.Entity<Carro>()
+            //Criação da tabela Carro
+            modelBuilder.Entity<Carro>()
+                .ToTable("Carro");
+
+            modelBuilder.Entity<Carro>()
                 .Property(c => c.Ano)
                 .IsRequired()
                 .HasColumnType("int")
                 .HasColumnName("Ano");
 
-            modelbuilder.Entity<Carro>()
-                .Property(c => c.Quilometragem)
-                .IsRequired()
-                .HasColumnType("int")
-                .HasColumnName("Quilometragem");
+            modelBuilder.Entity<Carro>()
+              .Property(c => c.Quilometragem)
+              .IsRequired()
+              .HasColumnType("int")
+              .HasColumnName("Quilometragem");
 
-            modelbuilder.Entity<Carro>()
-                .Property(c => c.Observacao)
-                .IsRequired()
-                .HasColumnType("varchar(500)")
-                .HasColumnName("Observacao");
+            modelBuilder.Entity<Carro>()
+             .Property(c => c.Observacao)
+             .IsRequired()
+             .HasColumnType("varchar(250)")
+             .HasColumnName("Observacao");
 
-            base.OnModelCreating(modelbuilder);
+            base.OnModelCreating(modelBuilder);
 
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=.\\sqlExpress;Initial Catalog=carro;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=Carro;Integrated Security=True");
             }
-
-            // Comandos para criar primeira migração (para lembrar depois)
-            // Exibir -> Console do Gerenciador de Pacotes 
-            // Colocar projeto padrão (set as startup project): Infra.Data
-            // rodar add-migration CriacaoTabelaMarca
-            // update-database
-            // rodar add-migration CriacaoTabelaVersao
-            // update-database
-            // remove-migration (remove a última)
 
             base.OnConfiguring(optionsBuilder);
         }
     }
 }
+
+// Comandos para criar primeira migração (para lembrar depois)
+// Exibir -> Console do Gerenciador de Pacotes 
+// Colocar projeto padrão (set as startup project): Infra.Data
+// rodar add-migration CriacaoTabelaMarca
+// update-database
+// rodar add-migration CriacaoTabelaVersao
+// update-database
+// remove-migration (remove a última)
